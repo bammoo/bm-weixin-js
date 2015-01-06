@@ -100,7 +100,7 @@ var _weixinShareCallAttached = false;
 /**
  * 分享配置
  * @param {object} options 分享内容
- * @param {string} options.img_url 图片地址
+ * @param {string} options.pic 图片地址
  * @param {string} options.link 分享后点击进来的链接，如果不设置就使用 window.location.href
  * @param {string} options.title 分享出去的标题，如果不设置就使用 document.title
  */
