@@ -19,7 +19,7 @@ var _weixinShareCallAttached = false;
 /**
  * 清空分享数据
  * 使用场景：spa 更新了视图，防止分享之前的视图绑定的数据
- * @return {null}
+ * @return {null}         
  */
 ns.clearWeixinShareData = function() {
   ns.setWeixinShareData(null)
@@ -33,7 +33,7 @@ ns.clearWeixinShareData = function() {
  */
 ns.setWeixinShareData = function(options) {
   options || (options = {});
-  // console.log('options:', options)
+  // alert('options:', options.pic)
 
   // options.xx 为空也替换，等于清空旧数据
   _shareData.imgUrl = options.imgUrl;
@@ -47,6 +47,11 @@ ns.setWeixinShareData = function(options) {
   _shareData.success = options.success;
   _shareData.cancel = options.cancel;
 
+  if(!wx || !wx.ready) {
+    alert('errorCode -101.')
+    return
+  }
+
   // _weixinShareCall 只挂一次，以后只修改引用的参数
   !_weixinShareCallAttached && wx.ready(_weixinShareCall);
   _weixinShareCallAttached = true;
@@ -55,7 +60,7 @@ ns.setWeixinShareData = function(options) {
 /**
  * 获取网络状态接口
  * @param  {Function} cb 请求成功后回调
- * @return {null}
+ * @return {null}      
  */
 ns.getNetworkType = function(cb) {
   wx.ready(function() {
